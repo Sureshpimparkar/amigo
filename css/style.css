@@ -1343,6 +1343,8 @@ button:focus-visible,
 #checkoutModal .modal-dialog {
   max-height: calc(100vh - 40px);
   margin: 20px auto;
+  display: flex;
+  align-items: center;
 }
 
 .amigo-modal {
@@ -1352,8 +1354,7 @@ button:focus-visible,
   display: flex;
   flex-direction: column;
   width: 100%;
-  /* Remove max-height from here - let body control scroll */
-  height: 100%;
+  max-height: calc(100vh - 40px);
 }
 
 .amigo-modal .modal-header {
@@ -1368,11 +1369,11 @@ button:focus-visible,
   overflow-x: hidden;
   flex: 1 1 auto;
   padding: 20px;
-  /* CRITICAL: min-height 0 allows flex item to shrink below content size */
   min-height: 0;
   /* Hide scrollbar but keep scroll functionality */
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE/Edge */
+  -webkit-overflow-scrolling: touch; /* Smooth scroll on iOS */
 }
 
 .amigo-modal .modal-body::-webkit-scrollbar {
@@ -1403,6 +1404,9 @@ button:focus-visible,
     max-height: calc(100vh - 30px);
     margin: 15px auto;
   }
+  .amigo-modal {
+    max-height: calc(100vh - 30px);
+  }
   .amigo-modal .modal-body { padding: 16px; }
   .amigo-modal .modal-footer { padding: 14px 16px; }
   .amigo-modal .modal-header { padding: 14px 16px; }
@@ -1416,6 +1420,7 @@ button:focus-visible,
     margin: 5px;
   }
   .amigo-modal {
+    max-height: calc(100vh - 10px);
     border-radius: 12px;
   }
   .amigo-modal .modal-body { padding: 14px; }
@@ -1439,10 +1444,13 @@ button:focus-visible,
     margin: 0;
   }
   .amigo-modal {
+    max-height: 100vh;
     height: 100vh;
     border-radius: 0;
   }
-  .amigo-modal .modal-body { padding: 12px; }
+  .amigo-modal .modal-body { 
+    padding: 12px;
+  }
   .amigo-modal .modal-header { padding: 12px; }
   .amigo-modal .modal-footer { 
     padding: 10px 12px;
