@@ -1356,6 +1356,7 @@ button:focus-visible,
   display: flex;
   flex-direction: column;
   max-height: calc(100vh - 40px);
+  overflow: hidden; /* enforce the max-height clamp on this box */
   position: relative;
 }
 
@@ -1363,8 +1364,8 @@ button:focus-visible,
 #checkoutForm {
   display: flex;
   flex-direction: column;
-  flex: 1;
-  min-height: 0;
+  flex: 1 1 auto;
+  min-height: 0; /* allow this flex item to shrink below its content size */
   overflow: hidden;
 }
 
@@ -1380,10 +1381,10 @@ button:focus-visible,
 
 .amigo-modal .modal-body {
   flex: 1 1 auto;
+  min-height: 0; /* CRITICAL: without this, flexbox won't shrink the body and scroll never triggers */
   overflow-y: auto;
   overflow-x: hidden;
   padding: 20px;
-  padding-bottom: 80px; /* Space for fixed footer */
   /* Hide scrollbar but keep scroll functionality */
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE/Edge */
@@ -1428,7 +1429,6 @@ button:focus-visible,
   }
   .amigo-modal .modal-body { 
     padding: 16px;
-    padding-bottom: 70px;
   }
   .amigo-modal .modal-footer { padding: 12px 16px; }
   .amigo-modal .modal-header { padding: 14px 16px; }
@@ -1447,7 +1447,6 @@ button:focus-visible,
   }
   .amigo-modal .modal-body { 
     padding: 14px;
-    padding-bottom: 70px;
   }
   .amigo-modal .modal-footer { 
     padding: 12px 14px;
@@ -1475,7 +1474,6 @@ button:focus-visible,
   }
   .amigo-modal .modal-body { 
     padding: 12px;
-    padding-bottom: 65px;
   }
   .amigo-modal .modal-header { 
     padding: 10px 12px;
@@ -1585,30 +1583,9 @@ button:focus-visible,
   color: var(--amigo-red);
 }
 
-.amigo-modal .modal-footer {
-  flex-shrink: 0;
-  border-top: 1px solid #eee;
-  padding: 16px 20px;
-  display: flex;
-  gap: 10px;
-  justify-content: flex-end;
-  align-items: center;
-}
-
 @media (max-width: 575.98px) {
   .checkout-note {
     font-size: 0.76rem;
-  }
-
-  /* Keep buttons on one line but make them smaller */
-  .amigo-modal .modal-footer {
-    padding: 10px 12px;
-    gap: 8px;
-  }
-
-  .amigo-modal .modal-footer .btn {
-    font-size: 0.85rem;
-    padding: 10px 16px;
   }
 }
 
